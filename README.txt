@@ -1,3 +1,12 @@
+Create a new conda or python environment with the requirements.txt file given. 
+Install requirements using pip install -r requirements.txt.
+
+For conda users : 
+conda create --name myenv
+conda activate myenv
+pip install -r requirements.txt
+
+
 To run script run python horizon-detector.py
 -i flag for input directory
 -o flag for output directory 
