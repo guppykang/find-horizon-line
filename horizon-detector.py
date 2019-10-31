@@ -1,3 +1,4 @@
+import time 
 import os
 from skimage import filters, feature
 from skimage.morphology import erosion, square
@@ -12,16 +13,18 @@ out_dir = 'results/'
 if not os.path.exists('results/'):
     os.mkdir('results')
 
+# filename = 'frame0030.jpg'
 for filename in sorted(os.listdir(directory)):
-    print(filename)
+    start = time.time()
     plt.figure()
     plt.title(filename)
     current_frame = imread(directory + filename, as_gray=True)
     original_output_image = plt.imshow(current_frame)
 
     erosion_frame = erosion(current_frame, square(6))
-    canny_edges = feature.canny(erosion_frame, sigma=3)
-    lines = probabilistic_hough_line(canny_edges, threshold=10, line_length=1500, line_gap=500)
+    canny_edges = feature.canny(erosion_frame, sigma=2)
+
+    lines = probabilistic_hough_line(canny_edges, threshold=10, line_length=1300, line_gap=400)
 
     count = 0
     distances = []
@@ -29,7 +32,7 @@ for filename in sorted(os.listdir(directory)):
         p1, p2 = line
         distances.append((np.sqrt((p1[0] - p2[0])**2 + (p1[1] - p2[1])**2), int(count)))
         count += 1
-    
+
     if len(distances) != 0:
         distances.sort(key=lambda x: x[0])
 
@@ -48,10 +51,16 @@ for filename in sorted(os.listdir(directory)):
 
         plt.plot(x_vals, y_vals, '--')
         plt.savefig(out_dir + filename)
+        print('saving img : ' + str(filename))
 
+    else : 
+        print('no horizon found for : ' + filename)
+
+    stop = time.time()
+    print('time spent : ' + str(stop-start))
+    # plt.show()
     plt.close()
 
-    print('saving img : ' + str(filename))
 
 
 

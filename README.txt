@@ -2,7 +2,9 @@ To run script run python horizon-detector.py
 
 The give solution is naive and is overfit to the data given to me. In other words, 
 there is a good chance that this will not work on other data since the hyperparameters were learned
-imperically, and not learned in any sense. 
+imperically, and not learned in any sense. Average runtime per image was 0.84 seconds. THis
+is probably not acceptable for a real time drone, and a once again a lower level language would 
+perform better
 
 I have used information from a research paper online from : http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.360.5951&rep=rep1&type=pdf#page=93
 
@@ -25,4 +27,5 @@ in the image. Hyperparameters were chosen imperically.
 
 5. save file and move on to next image  
 
-
+p.s I will admit my algorithm doesn't find all the horizons. I did not have enought time to perfect the hyperparameters get a 100% success rate. 
+Just a prototype that proves the concept and runtime. 
