@@ -17,7 +17,7 @@ args = parser.parse_args()
 
 
 directory = args.input
-out_dir = 'results/'
+out_dir = args.output 
 if not os.path.exists(args.output):
     os.mkdir(args.output)
 
