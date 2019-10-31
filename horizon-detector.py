@@ -10,13 +10,14 @@ import matplotlib.pyplot as plt
 from scipy.signal import convolve
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-i", "--input", help="path to input dir (include '/' at the end)", default='candidate_package/input/')
-parser.add_argument("-o", "--output", help="path output to dir (include '/' at the end)", default='results/')
+parser.add_argument("-i", "--input", help="path to input dir. must include the / at the end", default='candidate_package/input/')
+parser.add_argument("-o", "--output", help="path output to dir. must include the / at the end  ", default='results/')
 
 args = parser.parse_args()
 
+print('start')
 
-directory = args.input
+directory = args.input 
 out_dir = args.output 
 if not os.path.exists(args.output):
     os.mkdir(args.output)
