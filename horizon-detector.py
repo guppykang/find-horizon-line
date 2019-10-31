@@ -1,4 +1,5 @@
 import time 
+import argparse
 import os
 from skimage import filters, feature
 from skimage.morphology import erosion, square
@@ -7,11 +8,18 @@ from skimage.transform import probabilistic_hough_line
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import convolve
-#record the amount of time that it took to run this script
-directory = 'candidate_package/input/'
+
+parser = argparse.ArgumentParser()
+parser.add_argument("-i", "--input", help="path to input dir (include '/' at the end)", default='candidate_package/input/')
+parser.add_argument("-o", "--output", help="path output to dir (include '/' at the end)", default='results/')
+
+args = parser.parse_args()
+
+
+directory = args.input
 out_dir = 'results/'
-if not os.path.exists('results/'):
-    os.mkdir('results')
+if not os.path.exists(args.output):
+    os.mkdir(args.output)
 
 # filename = 'frame0030.jpg'
 for filename in sorted(os.listdir(directory)):

@@ -1,4 +1,7 @@
 To run script run python horizon-detector.py
+-i flag for input directory
+-o flag for output directory 
+-h for help
 
 The give solution is naive and is overfit to the data given to me. In other words, 
 there is a good chance that this will not work on other data since the hyperparameters were learned
@@ -29,3 +32,5 @@ in the image. Hyperparameters were chosen imperically.
 
 p.s I will admit my algorithm doesn't find all the horizons. I did not have enought time to perfect the hyperparameters get a 100% success rate. 
 Just a prototype that proves the concept and runtime. 
+
+If there is a concern with the high use of libraries, I would be more than happy to explain how each filtering and algorithm works over Zoom!
