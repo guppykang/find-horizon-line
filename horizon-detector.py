@@ -24,16 +24,23 @@ if not os.path.exists(args.output):
 # filename = 'frame0030.jpg'
 for filename in sorted(os.listdir(directory)):
     start = time.time()
+
     plt.figure()
     plt.title(filename)
+
     current_frame = imread(directory + filename, as_gray=True)
     original_output_image = plt.imshow(current_frame)
 
+    #erosion for cleaning up noise
     erosion_frame = erosion(current_frame, square(6))
+
+    #get edges from canny. Could use sobel 
     canny_edges = feature.canny(erosion_frame, sigma=2)
 
+    #use hough to get the best lines 
     lines = probabilistic_hough_line(canny_edges, threshold=10, line_length=1300, line_gap=400)
 
+    #get the longest line (probably change this to a better way to get the best line)
     count = 0
     distances = []
     for line in lines: 
@@ -44,8 +51,10 @@ for filename in sorted(os.listdir(directory)):
     if len(distances) != 0:
         distances.sort(key=lambda x: x[0])
 
+        #longest line 
         best_line = distances[-1]
 
+        #get slope
         p1, p2 = lines[best_line[1]]
         slope = (p1[1] - p2[1])/(p1[0] - p2[0])
         
@@ -54,6 +63,7 @@ for filename in sorted(os.listdir(directory)):
         for i in range(current_frame.shape[1]):
             x_vals.append(i)
 
+        #get y values for the x values through slope intercept form
         for x in x_vals: 
             y_vals.append(slope * x + p1[1])
 
@@ -65,6 +75,8 @@ for filename in sorted(os.listdir(directory)):
         print('no horizon found for : ' + filename)
 
     stop = time.time()
+
+    #calculate the runtime
     print('time spent : ' + str(stop-start))
     # plt.show()
     plt.close()
