@@ -1,6 +1,3 @@
-Create a new conda or python environment with the requirements.txt file given. 
-Install requirements using pip install -r requirements.txt.
-
 For conda users (highly recommended): 
 conda create --name myenv
 conda activate myenv
@@ -11,7 +8,7 @@ Run script according to instructions (highly recommend use -h)
 For python built in venv users : 
 Create new venv
 activate new venv
-pip install -r requirements.txt
+Do one or the other : pip install -r requirements.txt OR ./pip-setup.sh (pressy for all steps)
 Run script according to instructions (highly recommend use -h)
 
 
