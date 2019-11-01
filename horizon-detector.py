@@ -39,7 +39,7 @@ for filename in sorted(os.listdir(directory)):
     canny_edges = feature.canny(erosion_frame, sigma=2)
 
     #use hough to get the best lines 
-    lines = probabilistic_hough_line(canny_edges, threshold=10, line_length=1300, line_gap=400)
+    lines = probabilistic_hough_line(canny_edges, threshold=10, line_length=1100, line_gap=400)
 
     #get the longest line (probably change this to a better way to get the best line)
     count = 0

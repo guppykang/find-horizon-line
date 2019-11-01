@@ -47,7 +47,7 @@ in the image. Hyperparameters were chosen imperically.
 
 5. save file and move on to next image  
 
-p.s I will admit my algorithm doesn't find all the horizons. I did not have enought time to perfect the hyperparameters get a 100% success rate. 
+p.s I will admit my algorithm doesn't find all the horizons correctly . I did not have enought time to perfect the hyperparameters get a 100% success rate. 
 Just a prototype that proves the concept and runtime. 
 
 If there is a concern with the high use of libraries, I would be more than happy to explain how each filtering and algorithm works over Zoom!
