@@ -1,3 +1,5 @@
+First run will take 5-10 seconds to run
+
 For conda users (highly recommended): 
 conda create --name myenv
 conda activate myenv
